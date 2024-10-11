@@ -55,10 +55,11 @@ void _salvarEditar() async{
   _nomeController.clear();
   _cpfController.clear();
   _cartaoController.clear();
-  
+
   setState(() {
     _pessoaAtual = null;
   });
+  _loadPessoas();
   
 }
 
@@ -129,7 +130,9 @@ void _loadPessoas() async{
             ),
           ),
           ),
-          ElevatedButton(onPressed: null, child: Text(_pessoaAtual == null ? 'Salvar' : 'Atualizar'),
+          ElevatedButton(
+            onPressed: _salvarEditar, 
+            child: Text(_pessoaAtual == null ? 'Salvar' : 'Atualizar'),
           ),
           Expanded(child: ListView.builder(
             itemCount: _listaPessoas.length,
